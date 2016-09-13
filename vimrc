@@ -123,6 +123,9 @@ cnoremap <c-p> <up>
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
+" Clear search results
+nnoremap <c-l> :noh<CR>
+
 
 """
 " Commands

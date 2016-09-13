@@ -1,0 +1,45 @@
+" :Radmin
+function! s:radminfiles(A,L,P)
+  let files = globpath('app/admin', '**/*.rb')
+
+  return substitute(files, 'app/admin/\|.rb', '', 'g')
+endfunction
+
+function! s:Radmin(name)
+  execute "e app/admin/".a:name.".rb"
+endfunction
+
+command! -nargs=1 -complete=custom,s:radminfiles Radmin call s:Radmin(<f-args>)
+
+" :Rcomponent
+function! s:rcomponentfiles(A,L,P)
+  let files = globpath('app/components', '**/*.rb')
+
+  return substitute(files, 'app/components/\|.rb', '', 'g')
+endfunction
+
+function! s:Rcomponent(name)
+  execute "e app/components/".a:name.".rb"
+endfunction
+
+command! -nargs=1 -complete=custom,s:rcomponentfiles Rcomponent call s:Rcomponent(<f-args>)
+
+" :Rsite
+function! s:rsitefiles(A,L,P)
+  let files = globpath('app/sites', '**/*.rb')
+
+  return substitute(files, 'app/sites/\|.rb', '', 'g')
+endfunction
+
+function! s:Rsite(name)
+  execute "e app/sites/".a:name.".rb"
+endfunction
+
+command! -nargs=1 -complete=custom,s:rsitefiles Rsite call s:Rsite(<f-args>)
+
+" :Rroutes
+function! s:Rroutes()
+  execute "e config/routes.rb"
+endfunction
+
+command! -nargs=0 Rroutes call s:Rroutes()
